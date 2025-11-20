@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Creator Toolkit — Beautiful Edition</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<style>
+			:root{
+				/* friendlier, light palette */
+				--bg-1: #fffaf7; --bg-2:#fff6eb; --card:#ffffff; --muted:#6b7785; --text:#0b2540; --accent:#ff7a59; --accent-2:#3bb6a6; --glass:rgba(11,37,64,0.04);
+				--glass-2: rgba(11,37,64,0.03);
+			}
+		*{box-sizing:border-box}
+		html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 60%), url('https://source.unsplash.com/1600x900/?studio,creative');background-size:cover;background-blend-mode:overlay;color:var(--text);-webkit-font-smoothing:antialiased}
+		.container{max-width:1200px;margin:28px auto;padding:22px;backdrop-filter:blur(4px)}
+
+		/* Header / Hero */
+		header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+		.brand{display:flex;gap:12px;align-items:center}
+		.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+		h1{font-size:22px;margin:0}
+		p.lead{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+		.hero{display:flex;gap:20px;margin-top:18px;align-items:stretch}
+		.hero-left{flex:1}
+		.hero-card{background:var(--card);padding:22px;border-radius:14px;box-shadow:0 8px 28px rgba(11,37,64,0.08)}
+		.hero-cta{display:flex;gap:10px;margin-top:14px}
+		.btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:white;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700}
+		.btn-ghost{background:transparent;border:1px solid rgba(11,37,64,0.06);color:var(--muted);padding:10px 12px;border-radius:10px}
+
+		.hero-right{width:420px}
+		.illustration{height:100%;display:flex;align-items:center;justify-content:center}
+
+		/* layout */
+		.layout{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:18px}
+		.card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(11,37,64,0.06)}
+
+		label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+		.row{display:flex;gap:8px}
+		input[type=text], input[type=datetime-local], select, textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(11,37,64,0.08);background:linear-gradient(180deg, #fff,#fff);color:var(--text)}
+		textarea{min-height:90px;resize:vertical}
+		.muted{color:var(--muted);font-size:13px}
+		.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+		.chip{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:6px 10px;border-radius:999px;font-size:13px;cursor:pointer;border:1px solid rgba(255,255,255,0.02)}
+
+		/* features */
+		.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+		.feature{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fff);text-align:center;border:1px solid rgba(11,37,64,0.03)}
+		.feature svg{width:44px;height:44px;margin-bottom:8px;filter:grayscale(0);}
+		.feature h4{margin:6px 0 4px}
+		.feature p{font-size:13px;color:var(--muted);margin:0}
+
+		/* sample posts */
+		.samples{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+		.post{border-radius:10px;overflow:hidden;background:var(--card);border:1px solid rgba(11,37,64,0.04)}
+		.post .media{height:140px;background:#f4f6f7;display:flex;align-items:center;justify-content:center}
+		.post .body{padding:12px}
+		.post .meta{font-size:12px;color:var(--muted)}
+
+		/* schedule list */
+		.schedule-list{max-height:340px;overflow:auto;margin-top:8px}
+		.item{padding:10px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);margin-bottom:8px}
+
+		footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+
+		@media(max-width:1000px){.layout{grid-template-columns:1fr}.hero-right{display:none}.features{grid-template-columns:repeat(2,1fr)}.samples{grid-template-columns:1fr}}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<div class="brand">
+				<div class="logo">CT</div>
+				<div>
+					<h1>Creator Toolkit</h1>
+					<p class="lead">Smart idea, caption & hashtag helpers — with a friendly planner and export tools.</p>
+				</div>
+			</div>
+			<div class="muted">Private • No accounts</div>
+		</header>
+
+		<div class="hero">
+			<div class="hero-left">
+				<div class="hero-card">
+					<h2 style="margin:0">Turn ideas into scroll-stopping posts</h2>
+					<p class="muted" style="margin-top:8px">Generate post ideas, craft captions in different tones, assemble hashtags, and plan your calendar — all locally.</p>
+					<div class="hero-cta">
+						<button class="btn" onclick="document.getElementById('idea-keyword').focus()">Try generators</button>
+						<button class="btn-ghost" onclick="document.getElementById('sched-time').focus()">Open scheduler</button>
+					</div>
+
+								<div class="features">
+									<div class="feature" id="feat-idea" title="Jump to idea generator">
+										<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="#9dd8ef" stroke-width="1.2"/></svg>
+										<h4>Idea lab</h4>
+										<p>Quick prompts and hooks for any topic.</p>
+									</div>
+									<div class="feature" id="feat-caption" title="Create a caption">
+										<svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10" stroke="#b68cff" stroke-width="1.2" stroke-linecap="round"/></svg>
+										<h4>Caption writer</h4>
+										<p>Choose a tone and get ready-to-post copy.</p>
+									</div>
+									<div class="feature" id="feat-planner" title="Open the planner">
+										<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#8ff3d1" stroke-width="1.2"/></svg>
+										<h4>Planner</h4>
+										<p>Schedule posts locally and export CSV/JSON.</p>
+									</div>
+								</div>
+
+				</div>
+        
+				<div class="card" style="margin-top:14px">
+					<label>Idea generator</label>
+					<div class="row" style="margin-bottom:10px">
+						<input id="idea-keyword" type="text" placeholder="Enter a topic or keyword (optional)" />
+						<button id="idea-gen" class="btn">Generate</button>
+					</div>
+					<div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+						<button id="voice-start" class="btn-ghost">🎤 Talk for ideas</button>
+						<div id="voice-status" class="muted">No voice input</div>
+					</div>
+					<div class="muted">Click generate to get short post ideas and hooks.</div>
+					<div id="idea-result" style="margin-top:12px"></div>
+				</div>
+
+				<div class="card" style="margin-top:14px">
+					<label>Caption generator</label>
+					<div class="row" style="margin-bottom:10px">
+						<select id="tone"><option value="casual">Casual</option><option value="professional">Professional</option><option value="funny">Funny</option><option value="inspirational">Inspirational</option></select>
+						<button id="caption-gen" class="btn">Write caption</button>
+						<button id="caption-copy" class="btn-ghost">Copy</button>
+					</div>
+					<textarea id="caption-result" placeholder="Generated caption appears here..."></textarea>
+				</div>
+
+				<div class="card" style="margin-top:14px">
+					<label>Hashtag generator</label>
+					<div class="row" style="margin-bottom:10px">
+						<input id="hashtags-keyword" type="text" placeholder="Keywords (comma separated). Try: photo, video, design" />
+						<button id="hashtags-gen" class="btn">Suggest</button>
+					</div>
+					<div class="chips" id="hashtags-result"></div>
+					<div class="muted" style="margin-top:10px">Tap a tag to copy it. Use the composer to assemble your final post.</div>
+				</div>
+
+				<div class="card" style="margin-top:14px">
+					<label>Composer</label>
+					<textarea id="composer" placeholder="Assemble your post here. Use generated caption and hashtags..."></textarea>
+					<div style="margin-top:10px" class="row">
+						<button id="copy-post" class="btn">Copy Post</button>
+						<button id="clear-composer" class="btn-ghost">Clear</button>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="hero-right">
+						<div class="illustration">
+							<img id="illustration-img" alt="inspirational workspace" style="width:100%;border-radius:12px;object-fit:cover" src="https://source.unsplash.com/420x300/?creative,workspace"/>
+						</div>
+
+				<div class="card" style="margin-top:12px">
+					<label>Schedule a post</label>
+					<div style="margin-top:8px">
+						<label class="muted">Publish time</label>
+						<input id="sched-time" type="datetime-local" />
+						<label class="muted" style="margin-top:8px">Caption / content</label>
+						<textarea id="sched-content" placeholder="Paste caption or post text..."></textarea>
+						<div class="row" style="margin-top:8px">
+							<button id="add-sched" class="btn">Add to schedule</button>
+							<button id="export-json" class="btn-ghost">Export JSON</button>
+							<button id="export-csv" class="btn-ghost">Export CSV</button>
+						</div>
+					</div>
+
+					<div style="margin-top:12px">
+						<label class="muted">Upcoming</label>
+						<div class="schedule-list" id="schedule-list"></div>
+						<div style="margin-top:8px" class="row">
+							<button id="clear-sched" class="btn-ghost">Clear all</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="margin-top:12px">
+					<label>Tips & write-ups</label>
+					<div style="margin-top:8px" class="muted">
+						<strong>Quick tip:</strong> Short captions with a hook and a CTA get more saves. Use 3–5 niche hashtags and 2–3 broad hashtags.
+					</div>
+					<div style="margin-top:10px">
+						<div class="muted"><strong>Why plan?</strong> Scheduling helps maintain consistency. Export CSV to upload to third-party schedulers.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="samples">
+				<div class="post">
+					<div class="media">
+						<img id="sample-img-1" alt="sample post 1" style="width:100%;height:100%;object-fit:cover" src="https://source.unsplash.com/420x300/?before,after,product"/>
+					</div>
+					<div class="body">
+						<div class="meta">Sample • Product reveal</div>
+						<div style="margin-top:8px">Before → After: a small edit that changed our conversions. Share transformations with a short explainer and a CTA.</div>
+					</div>
+				</div>
+				<div class="post">
+					<div class="media">
+						<img id="sample-img-2" alt="sample post 2" style="width:100%;height:100%;object-fit:cover" src="https://source.unsplash.com/420x300/?tutorial,howto,guide"/>
+					</div>
+					<div class="body">
+						<div class="meta">Sample • How-to</div>
+						<div style="margin-top:8px">Micro tutorial: break a process into 3 steps. Use numbered captions or slide carousels to increase engagement.</div>
+					</div>
+				</div>
+		</div>
+
+		<footer>Made with care — local-only storage. Export anytime.</footer>
+	</div>
+
+	<script>
+		// keep existing logic and data structures, unchanged behaviour
+		const ideas = [
+			"Share a behind-the-scenes look at your workspace.",
+			"Show a before/after transformation relevant to your niche.",
+			"Share 3 quick tips that beginners often miss.",
+			"Tell a short story about a challenge and what you learned.",
+			"Create a 'myth vs reality' post about a common misconception.",
+			"Do a 30-second micro-tutorial that solves one problem.",
+			"Share a resource list (books, tools, apps) you use.",
+			"Show a day-in-the-life carousel or short video idea.",
+			"Ask your audience a question to spark comments.",
+			"Turn a customer testimonial into a case-study post."
+		];
+
+		const captionTemplates = {
+			casual: ["Quick tip: {keyword}. What do you think? 🤔", "I tried {keyword} and here's what happened..."],
+			professional: ["Here's a practical approach to {keyword} that scales well.", "Industry insight: {keyword} — why it matters now."],
+			funny: ["When you {keyword} and pretend you knew what you were doing 😂", "POV: {keyword} (expectations vs reality)"],
+			inspirational: ["Don't wait for permission — {keyword} is your signal to start.", "Small steps in {keyword} lead to big wins. Keep going."]
+		};
+
+		const defaultHashtags = {
+			general: ["#contentcreator","#smallbusiness","#creative","#marketing","#socialmedia"],
+			photo: ["#photography","#photooftheday","#portrait","#dslr"],
+			video: ["#videography","#reels","#shorts","#behindthescenes"],
+			design: ["#design","#ux","#graphicdesign","#branding"]
+		};
+
+		function $(id){return document.getElementById(id)}
+		function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+		function sanitizeKeyword(s){return (s||"").trim()}
+
+			$('idea-gen').addEventListener('click', ()=>{
+			const k = sanitizeKeyword($('idea-keyword').value);
+			const result = [];
+			for(let i=0;i<3;i++){
+				const base = pick(ideas);
+				result.push(k ? base.replace(/\./,' about '+k+'.') : base);
+			}
+			$('idea-result').innerHTML = result.map(r=>`<div class="item">${r}</div>`).join('');
+				refreshImages(k);
+		});
+
+		$('caption-gen').addEventListener('click', ()=>{
+			const tone = $('tone').value;
+			const k = sanitizeKeyword($('idea-keyword').value)||'this topic';
+			const tmpl = pick(captionTemplates[tone] || captionTemplates.casual);
+			const caption = tmpl.replace('{keyword}', k);
+			$('caption-result').value = caption + '\n\n' + pick(["#protip","#learn","#creatorlife","#daily"]);
+		});
+
+		$('caption-copy').addEventListener('click', ()=>{
+			navigator.clipboard.writeText($('caption-result').value).then(()=>alert('Caption copied'));
+		});
+
+		$('hashtags-gen').addEventListener('click', ()=>{
+			const raw = $('hashtags-keyword').value;
+			const parts = raw.split(',').map(s=>s.trim()).filter(Boolean);
+			const out = new Set();
+			if(parts.includes('photo')) defaultHashtags.photo.forEach(h=>out.add(h));
+			if(parts.includes('video')) defaultHashtags.video.forEach(h=>out.add(h));
+			if(parts.includes('design')) defaultHashtags.design.forEach(h=>out.add(h));
+			defaultHashtags.general.forEach(h=>out.add(h));
+			parts.forEach(p=>{ const tag = '#'+p.replace(/\s+/g,'').toLowerCase(); if(tag.length>1) out.add(tag); });
+			const container = $('hashtags-result'); container.innerHTML='';
+			Array.from(out).slice(0,25).forEach(h=>{
+				const el = document.createElement('div'); el.className='chip'; el.textContent=h;
+				el.addEventListener('click', ()=>{navigator.clipboard.writeText(h).then(()=>{el.textContent = h + ' ✓'; setTimeout(()=>el.textContent=h,900)})});
+				container.appendChild(el);
+			});
+			// update images based on first tag if present
+			if(parts.length>0) refreshImages(parts[0]);
+		});
+
+		$('copy-post').addEventListener('click', ()=>{ navigator.clipboard.writeText($('composer').value).then(()=>alert('Post copied to clipboard')); });
+		$('clear-composer').addEventListener('click', ()=>{$('composer').value=''});
+
+		const SKEY = 'smwc_schedule_v1';
+		function loadSchedule(){ const raw = localStorage.getItem(SKEY); try{return raw?JSON.parse(raw):[]}catch(e){return[]} }
+		function saveSchedule(arr){localStorage.setItem(SKEY,JSON.stringify(arr))}
+		function renderSchedule(){
+			const list = $('schedule-list'); list.innerHTML='';
+			const items = loadSchedule().sort((a,b)=>new Date(a.time)-new Date(b.time));
+			if(items.length===0){list.innerHTML='<div class="muted">No scheduled posts</div>';return}
+			items.forEach((it,idx)=>{
+				const d = new Date(it.time);
+				const el = document.createElement('div'); el.className='item';
+				el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div style="max-width:64%"><div class="meta">${d.toLocaleString()}</div><div style="margin-top:6px">${escapeHtml(it.content)}</div></div><div style="text-align:right"><button class="btn-ghost small" data-idx="${idx}">Copy</button><div style="height:6px"></div><button class="btn-ghost small" data-del="${idx}">Delete</button></div></div>`;
+				list.appendChild(el);
+			});
+			list.querySelectorAll('button[data-idx]').forEach(b=>b.addEventListener('click', e=>{ const i = e.target.dataset.idx; const items = loadSchedule(); navigator.clipboard.writeText(items[i].content).then(()=>alert('Content copied')); }));
+			list.querySelectorAll('button[data-del]').forEach(b=>b.addEventListener('click', e=>{ const i = Number(e.target.dataset.del); const items = loadSchedule(); items.splice(i,1); saveSchedule(items); renderSchedule(); }));
+		}
+
+		function escapeHtml(s){return (s||'').replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));}
+
+		$('add-sched').addEventListener('click', ()=>{
+			const time = $('sched-time').value; const content = $('sched-content').value.trim();
+			if(!time || !content){alert('Provide time and content'); return}
+			const items = loadSchedule(); items.push({time,content}); saveSchedule(items); $('sched-content').value=''; $('sched-time').value=''; renderSchedule();
+		});
+		$('clear-sched').addEventListener('click', ()=>{ if(confirm('Clear all scheduled posts?')){saveSchedule([]);renderSchedule()} });
+
+		function download(filename, text){ const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})); a.download = filename; document.body.appendChild(a); a.click(); a.remove(); }
+		$('export-json').addEventListener('click', ()=>{ const items = loadSchedule(); download('schedule.json', JSON.stringify(items, null, 2)); });
+		$('export-csv').addEventListener('click', ()=>{ const items = loadSchedule(); if(items.length===0){alert('No items to export'); return} const rows = [['time','content']].concat(items.map(i=>[i.time, i.content])); const csv = rows.map(r=>r.map(c=>'"'+(String(c||'').replace(/"/g,'""'))+'"').join(',')).join('\n'); download('schedule.csv', csv); });
+
+		renderSchedule();
+
+		document.addEventListener('click', e=>{ if(e.target && e.target.classList.contains('item')){ $('composer').value += '\n' + e.target.textContent; } });
+
+			// feature icons behaviour
+			document.getElementById('feat-idea').addEventListener('click', ()=>{ document.getElementById('idea-keyword').focus(); });
+			document.getElementById('feat-caption').addEventListener('click', ()=>{ document.getElementById('caption-gen').click(); });
+			document.getElementById('feat-planner').addEventListener('click', ()=>{ document.getElementById('sched-time').focus(); });
+
+			// Refresh illustration and sample images by changing their src to Unsplash with the query
+			function refreshImages(topic){
+				const q = topic && topic.trim() ? topic.trim().replace(/\s+/g,',') : 'creative,content';
+				const img = document.getElementById('illustration-img');
+				const s1 = document.getElementById('sample-img-1');
+				const s2 = document.getElementById('sample-img-2');
+				// use source.unsplash.com which serves random images for a query; append timestamp to force reload
+				const ts = Date.now();
+				if(img) img.src = `https://source.unsplash.com/420x300/?${encodeURIComponent(q)}&sig=${ts}`;
+				if(s1) s1.src = `https://source.unsplash.com/420x300/?${encodeURIComponent(q)},product&sig=${ts+1}`;
+				if(s2) s2.src = `https://source.unsplash.com/420x300/?${encodeURIComponent(q)},tutorial&sig=${ts+2}`;
+			}
+
+			// Speech recognition (voice ideas)
+			(function(){
+				const startBtn = $('voice-start');
+				const status = $('voice-status');
+				let recog = null;
+				let listening = false;
+				const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+				if(!SpeechRecognition){
+					startBtn.disabled = true;
+					status.textContent = 'Voice not supported in this browser';
+					return;
+				}
+				recog = new SpeechRecognition();
+				recog.lang = 'en-US';
+				recog.interimResults = true;
+				recog.maxAlternatives = 1;
+
+				recog.addEventListener('start', ()=>{ listening = true; startBtn.textContent = '⏺️ Listening...'; status.textContent = 'Listening — speak now'; });
+				recog.addEventListener('end', ()=>{ listening = false; startBtn.textContent = '🎤 Talk for ideas'; status.textContent = 'Processing...'; });
+
+				let interim = '';
+				recog.addEventListener('result', (ev)=>{
+					const transcript = Array.from(ev.results).map(r=>r[0].transcript).join('');
+					interim = ev.results[ev.results.length-1].isFinal ? transcript : transcript;
+					$('idea-keyword').value = interim;
+					status.textContent = ev.results[ev.results.length-1].isFinal ? 'Heard: '+interim : 'Listening... ' + interim;
+				});
+
+				recog.addEventListener('error', (e)=>{ status.textContent = 'Voice error: '+(e.error||'unknown'); listening = false; startBtn.textContent = '🎤 Talk for ideas'; });
+
+				recog.addEventListener('end', ()=>{
+					// when ended, if there's text, trigger generation
+					const k = sanitizeKeyword($('idea-keyword').value);
+					if(k) { $('idea-gen').click(); status.textContent = 'Ready — generated ideas for: '+k; refreshImages(k); }
+					else status.textContent = 'No input detected';
+				});
+
+				startBtn.addEventListener('click', ()=>{
+					if(listening){ recog.stop(); startBtn.textContent='🎤 Talk for ideas'; return; }
+					try{ recog.start(); }catch(e){ /* ignore redundant starts */ }
+				});
+			})();
+	</script>
+</body>
+</html>
+
